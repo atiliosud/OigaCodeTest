@@ -1,0 +1,57 @@
+<div class="container">
+    <h1>Create New Evaluation</h1>
+  
+        
+    <form [formGroup]="evaluationForm" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label class="control-label" for="courseId">Curso</label>
+            <select class="form-control" data-val="true" formControlName="courseId" (change)="changeCourse($event)"
+              data-val-required="Course is required" id="courseId" name="courseId">
+              <option></option>
+              <option *ngFor='let course of courses' value="{{ course.id }}">{{ course.name }}</option>
+            </select>
+    
+            <span class="text-danger field-validation-valid" data-valmsg-for="courseId"
+              data-valmsg-replace="true"></span>
+          </div>
+
+
+          <div class="form-group">
+            <label class="control-label" for="studentId">Student</label>
+            <select class="form-control" data-val="true" formControlName="studentId"
+              data-val-required="Student is required" id="studentId" name="studentId">
+              <option></option>
+              <option *ngFor='let student of students' value="{{ student.id }}">{{ student.name }} {{ student.lastName }}</option>
+            </select>
+    
+            <span class="text-danger field-validation-valid" data-valmsg-for="studentId"
+              data-valmsg-replace="true"></span>
+          </div>
+  
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input 
+                formControlName="description"
+                id="description" 
+                type="text" 
+                data-val-required="Description is required"
+                class="form-control">
+            <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
+        </div>
+  
+        <div class="form-group">
+            <label for="stars">Stars</label>
+            <input 
+                formControlName="stars"
+                id="stars" 
+                type="number" 
+                data-val-required="Stars is required"
+                class="form-control">
+            <span class="text-danger field-validation-valid" data-valmsg-for="stars" data-valmsg-replace="true"></span>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!evaluationForm.valid">Submit</button>
+        <a class="btn btn-info" [routerLink]="['/course']">Voltar</a>
+    </form>
+</div>

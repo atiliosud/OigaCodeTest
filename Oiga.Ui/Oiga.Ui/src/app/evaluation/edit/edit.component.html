@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>Edit Evaluation</h1>
+  
+        
+    <form [formGroup]="evaluationForm" *ngIf="evaluation.id" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label class="control-label" for="courseId">Curso</label>
+            <select class="form-control" data-val="true" formControlName="courseId" (change)="changeCourse($event)"   
+              [(ngModel)]="evaluation.courseId"          
+              data-val-required="Course is required" id="courseId" name="courseId" [disabled]="true">
+              <option></option>
+              <option *ngFor='let course of courses' value="{{ course.id }}">{{ course.name }}</option>
+            </select>
+    
+            <span class="text-danger field-validation-valid" data-valmsg-for="courseId"
+              data-valmsg-replace="true"></span>
+          </div>
+
+
+          <div class="form-group">
+            <label class="control-label" for="studentId">Student</label>
+            <select class="form-control" data-val="true" formControlName="studentId"  
+              [(ngModel)]="evaluation.studentId"              
+              data-val-required="Student is required" id="studentId" name="studentId" [disabled]="true">
+              <option></option>
+              <option *ngFor='let student of students' value="{{ student.id }}">{{ student.name }}</option>
+            </select>
+    
+            <span class="text-danger field-validation-valid" data-valmsg-for="studentId"
+              data-valmsg-replace="true"></span>
+          </div>
+  
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input 
+                formControlName="description"
+                id="description" 
+                type="text" 
+                [(ngModel)]="evaluation.description"
+                data-val-required="Description is required"
+                class="form-control">
+            <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
+        </div>
+  
+        <div class="form-group">
+            <label for="stars">Stars</label>
+            <input 
+                formControlName="stars"
+                id="stars" 
+                type="number" 
+                data-val-required="Stars is required"
+                [(ngModel)]="evaluation.stars"
+                class="form-control">
+            <span class="text-danger field-validation-valid" data-valmsg-for="stars" data-valmsg-replace="true"></span>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!evaluationForm.valid">Submit</button>
+        <a class="btn btn-info" [routerLink]="['/course']">Voltar</a>
+    </form>
+</div>

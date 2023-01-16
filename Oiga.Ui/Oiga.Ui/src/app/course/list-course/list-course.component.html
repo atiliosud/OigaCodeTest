@@ -1,0 +1,33 @@
+<main role="main" class="pb-3">
+
+
+    <h1>List course</h1>
+    <hr>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>            
+            <th>Name</th>
+            <th>Active?</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let course of courses'>
+            <td>
+              {{ course.name }}
+            </td>
+            <td>
+              <input class="check-box" [checked]="course.active === true" type="checkbox" disabled>
+            </td>
+            <td class="text-right">
+              <a class="btn btn-warning" href="#" [routerLink]="['/evaluation/', course.id, 'list']">
+                <span class="fa fa-search">Evaluation</span>
+              </a>              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+    
+    </main>
