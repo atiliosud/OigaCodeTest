@@ -5,7 +5,7 @@
     <form [formGroup]="evaluationForm" (ngSubmit)="submit()">
 
         <div class="form-group">
-            <label class="control-label" for="courseId">Curso</label>
+            <label class="control-label" for="courseId">Course</label>
             <select class="form-control" data-val="true" formControlName="courseId" (change)="changeCourse($event)"
               data-val-required="Course is required" id="courseId" name="courseId">
               <option></option>
